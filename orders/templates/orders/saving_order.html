@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %} | Food list {% endblock title%}
+{% block content %}
+<div class="Xcardview_list">
+    {{saving_foods}}
+    <form action="" class="Xform" method="post">
+        {% csrf_token %}
+        {{profile_form}}
+        <input type="submit" value="ORDER" class="XBtn warning Xmt-5">
+    </form>
+
+</div>
+
+
+
+
+{% endblock content %}

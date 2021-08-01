@@ -1,0 +1,20 @@
+{
+  "name": "food_order",
+  "version": "1.0.0",
+  "description": "étel rendelés project",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass static/sass/main.scss static/style.css"
+  },
+  "keywords": [
+    "étel",
+    "rendelés",
+    "food",
+    "orders"
+  ],
+  "author": "hybase",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^6.0.1"
+  }
+}

@@ -1,0 +1,128 @@
+.Xcontainer {
+  margin: 2rem auto;
+  width: 70%;
+  background-color: #000814;
+  padding: 3rem; }
+  @media only screen and (max-width: 1024px) {
+    .Xcontainer {
+      width: auto;
+      padding: 1rem;
+      font-size: 2rem; } }
+
+body {
+  margin: 0 !important;
+  background-color: #001d3d !important;
+  color: #EEE !important; }
+
+.error {
+  background-color: red !important;
+  color: #000814 !important; }
+  .error:hover {
+    filter: brightness(0.8);
+    color: #EEE !important; }
+
+.warning {
+  background-color: yellow !important;
+  color: #000814 !important; }
+  .warning:hover {
+    filter: brightness(0.9); }
+
+.Xlink {
+  text-decoration: none;
+  color: #EEE; }
+
+.Xmt-5 {
+  margin-top: 5px; }
+
+.Xlink_btn {
+  padding: 0.4rem 1rem;
+  text-decoration: none;
+  color: #EEE;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid #001d3d;
+  align-self: flex-start; }
+  .Xlink_btn:hover {
+    background-color: #001d3d;
+    cursor: pointer; }
+
+input, input[type="tel"], textarea {
+  background-color: #000814 !important;
+  color: #ffd60a !important;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border-style: none;
+  border: 1px solid #001d3d; }
+
+.Xcardview_list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 100%;
+  justify-content: space-between; }
+
+.Xcardview {
+  width: 49%;
+  padding: 0.4rem 0;
+  border-top: 1px solid #EEE;
+  display: flex; }
+  @media only screen and (max-width: 1024px) {
+    .Xcardview {
+      width: 100%; } }
+  .Xcardview__long {
+    width: 100%; }
+  .Xcardview__sm_image {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover; }
+  .Xcardview__container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    padding-left: 1rem;
+    padding-top: 0; }
+  .Xcardview__title {
+    width: 100%; }
+  .Xcardview__footer {
+    width: max-content; }
+
+.Xnavbar {
+  margin: 0 auto;
+  padding: 0.4rem;
+  background-color: #000814; }
+  @media only screen and (max-width: 1024px) {
+    .Xnavbar {
+      padding: 1rem;
+      font-size: 2rem; } }
+  .Xnavbar ul {
+    display: flex;
+    flex-direction: row; }
+  .Xnavbar__items {
+    list-style: none;
+    padding: 1rem; }
+    .Xnavbar__items:hover {
+      background-color: #ffd60a; }
+  .Xnavbar__links {
+    text-decoration: none;
+    text-transform: uppercase; }
+
+.Xmodal {
+  background-color: #001d3d !important;
+  color: #EEE !important; }
+
+.XnumberInput {
+  width: 100%;
+  padding: 1rem;
+  color: #EEE;
+  background-color: #000814;
+  border-radius: 0.2rem; }
+  .XnumberInput input[type="number" i] {
+    padding: 0.3rem !important;
+    width: 1rem !important;
+    height: 1rem !important; }
+
+.Xform {
+  width: 100%;
+  display: flex;
+  flex-direction: column; }

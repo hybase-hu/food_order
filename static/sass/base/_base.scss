@@ -1,0 +1,71 @@
+.Xcontainer {
+    margin:2rem auto;
+    width:70%;
+    background-color:$color-primary-dark;
+    padding:3rem;
+
+    @media only screen and (max-width:1024px) {
+        width:auto;
+        padding:1rem;
+        font-size:2rem;
+
+    }
+
+}
+
+body {
+    margin: 0 !important;
+    background-color:$color-primary !important;
+    color: $color-white !important;
+}
+
+.error {
+    background-color:red !important;
+    color:$color-primary-dark !important;
+    &:hover {
+        filter:brightness(0.8);
+        color:$color-white !important;
+    }
+}
+.warning {
+    background-color:yellow !important;
+    color:$color-primary-dark !important;
+    &:hover {
+        filter:brightness(0.9);
+    }
+}
+.Xlink {
+    text-decoration:none;
+    color:$color-white;
+}
+
+.Xmt-5 {
+    margin-top:5px;
+}
+
+.Xlink_btn {
+    padding:0.4rem 1rem;
+    text-decoration:none;
+    color:$color-white;
+    text-transform:uppercase;
+    text-align:center;
+    @include border-radius;
+    border:1px solid $color-primary;
+    align-self:flex-start;
+    &:hover {
+        background-color:$color-primary;
+        cursor:pointer;
+
+    }
+}
+
+
+
+input, input[type="tel"],textarea {
+    background-color:$color-primary-dark !important;
+    color:$color-secondary !important;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border-style:none;
+    border:1px solid $color-primary;
+}

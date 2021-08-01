@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} | Food list {% endblock title%}
+{% block script %}
+<script src="{% static '/food/js/food.js' %}" defer></script>
+{% endblock script %}
+{% block content %}
+
+
+
+<div class="Xcardview_list">
+{% for item in object_list %}
+
+
+    <form action="{% url 'orders:foods_view'%}" method="post">
+    {%csrf_token%}
+    <div class="modal fade" id="showDetails{{item.pk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen-xl-down">
+        <div class="modal-content Xmodal">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Orders : {{item}}</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <div class="form-floating">
+              <textarea class="form-control"  name="food_comment" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+              <label for="floatingTextarea2">Comments</label>
+            </div>
+              <input type="number" class="XnumberInput Xmt-5" name="food_count" value="1"  min="1" max="10">
+          </div>
+          <div class="modal-footer">
+            <input type="hidden" name="pk" id="pk" value="{{item.pk}}">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">To the basket</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+
+
+    <div class="Xcardview">
+        <img src="{{item.food_pictures.url}}" alt="{{item.food}} pictures" class="Xcardview__sm_image">
+        <div class="Xcardview__container">
+            <div class="Xcardview__title"><b>{{item.food_code|upper}}: </b>{{item.food_name|upper}}</div>
+            <div class="Xcardview__body Xmt-5 ">{{item.food_description | truncatewords:10}}</div>
+            <div class="Xcardview__footer Xmt-5">{{item.food_price}} FT</div>
+            <div class="Xlink_btn Xmt-5" data-bs-toggle="modal" data-bs-target="#showDetails{{item.pk}}">BUY</div>
+        </div>
+    </div>
+
+
+{% endfor %}
+</div>
+
+{% endblock content %}

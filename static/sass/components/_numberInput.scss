@@ -1,0 +1,13 @@
+.XnumberInput {
+    width:100%;
+    padding:1rem;
+    color:$color-white;
+    background-color:$color-primary-dark;
+    border-radius:0.2rem;
+
+    input[type="number" i] {
+        padding:0.3rem !important;
+        width:1rem !important;
+        height:1rem !important;
+    }
+}
