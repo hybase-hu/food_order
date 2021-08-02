@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+food list
+
+{% for object in object_list%}
+    <h1><a href="{% url 'management:management_food_update' pk=object.pk %}">{{object}}</a></h1>
+{% endfor %}
+</body>
+</html>

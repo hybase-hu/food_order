@@ -69,3 +69,12 @@ input, input[type="tel"],textarea {
     border-style:none;
     border:1px solid $color-primary;
 }
+
+select {
+    background-color:$color-primary-dark !important;
+    color:$color-secondary !important;
+    padding:1rem 0.5rem;
+    border-radius: 5px;
+    border-style:none;
+    border:1px solid $color-primary;
+}

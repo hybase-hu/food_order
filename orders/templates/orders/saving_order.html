@@ -2,15 +2,39 @@
 {% load static %}
 
 
-{% block title %} | Food list {% endblock title%}
+{% block title %} | My Orders {% endblock title%}
 {% block content %}
+
 <div class="Xcardview_list">
-    {{saving_foods}}
+    <b>Your orders:</b>
+    {% for food in saving_foods%}
+        <div class="Xcardview Xcardview__long">
+               {{food}} [{{food.description}}]
+        </div>
+    {% endfor %}
+    <hr>
+    <b>Total price: {{profile.get_selected_food_total_price}} FT</b>
+    <br/>
+    <br/>
+    <br/>
+
+    {% if saving_foods %}
     <form action="" class="Xform" method="post">
         {% csrf_token %}
         {{profile_form}}
+        <label for="payments">Choose Payment method:</label>
+
+        <select id="payments" name="payments">
+            {% for item in payed_method %}
+              <option value="{{item.0}}">{{item.1}}</option>
+            {% endfor %}
+        </select>
+
         <input type="submit" value="ORDER" class="XBtn warning Xmt-5">
     </form>
+    {% else %}
+    <div class="Xcardview__title error">The basket is empty</div>
+    {%endif%}
 
 </div>
 

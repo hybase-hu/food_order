@@ -6,4 +6,4 @@ from orders.models import Orders
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Orders
-        fields = ['foods',]
+        fields = ['payed_method',]

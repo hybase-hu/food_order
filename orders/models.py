@@ -22,7 +22,7 @@ class SelectedFood(models.Model):
     description = models.TextField()
 
     def __str__(self):
-        return self.food.food_name + " : " + str(self.quantity) + "db : " + str(self.total_price)
+        return str(self.food) + " | " + str(self.quantity) + "db : " + str(self.total_price)
 
 
 

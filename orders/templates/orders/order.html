@@ -56,8 +56,12 @@
 
     <div class="Xcardview Xcardview__long">
         <div class="Xcardview__container">
+            {% if basket_items %}
             <div>Total Price: {{total_price}} FT</div>
              <a class="Xlink_btn warning" href="{% url 'orders:save_order'%}">I AM ORDER</a>
+            {% else %}
+            <div>NO item in basket</div>
+            {% endif %}
         </div>
     </div>
 

@@ -55,6 +55,14 @@ input, input[type="tel"], textarea {
   border-style: none;
   border: 1px solid #001d3d; }
 
+select {
+  background-color: #000814 !important;
+  color: #ffd60a !important;
+  padding: 1rem 0.5rem;
+  border-radius: 5px;
+  border-style: none;
+  border: 1px solid #001d3d; }
+
 .Xcardview_list {
   display: flex;
   flex-wrap: wrap;
@@ -99,13 +107,14 @@ input, input[type="tel"], textarea {
     display: flex;
     flex-direction: row; }
   .Xnavbar__items {
-    list-style: none;
-    padding: 1rem; }
-    .Xnavbar__items:hover {
-      background-color: #ffd60a; }
+    list-style: none; }
   .Xnavbar__links {
     text-decoration: none;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    padding: 1rem;
+    display: block; }
+    .Xnavbar__links:hover {
+      background-color: #ffd60a; }
 
 .Xmodal {
   background-color: #001d3d !important;
