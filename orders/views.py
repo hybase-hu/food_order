@@ -11,6 +11,7 @@ def food_orders_view(request):
     template_name = "orders/order.html"
     generate_uuid = get_generate_uuid(request)
     profile, created = Profile.objects.get_or_create(uuid=generate_uuid)
+
     if request.method == 'POST':
         food = Food.objects.get(pk=request.POST['pk'])
         this_selected_food = SelectedFood.objects.filter(buyer=profile, food=food).first()
@@ -19,6 +20,7 @@ def food_orders_view(request):
             this_selected_food.quantity = request.POST['food_count']
             this_selected_food.description = request.POST['food_comment']
             this_selected_food.save()
+
         else:
             this_selected_food = SelectedFood.objects.create(
                 buyer=profile,
@@ -27,8 +29,10 @@ def food_orders_view(request):
                 quantity=request.POST['food_count']
             )
 
+
     context = {
         'basket_items': profile.get_selected_food(),
+        'ordered_items': profile.get_under_order_food(),
         'total_price': profile.get_selected_food_total_price()
     }
     return render(request=request, context=context, template_name=template_name)
@@ -40,8 +44,8 @@ class SelectedFoodDeleteView(DeleteView):
     success_url = "/orders/"
 
 
-def clear_basket(profile):
-    profile.get_selected_food().delete()
+def this_food_is_ordered(profile):
+    profile.get_selected_food().update(ordered=True)
 
 
 def add_order_view(request):
@@ -50,6 +54,7 @@ def add_order_view(request):
     profile, created = Profile.objects.get_or_create(uuid=generate_uuid)
     saving_foods = profile.get_selected_food()
     profile_form = ProfileForm(instance=profile)
+
 
     if request.method == "POST":
         profile_form = ProfileForm(request.POST, instance=profile)
@@ -66,9 +71,12 @@ def add_order_view(request):
                 deliver_location_zip=profile.deliver_location_zip,
                 total_price=profile.get_selected_food_total_price(),
             )
-            orders.foods.add(*saving_foods)
-            print("this is created order?", created, orders)
-            clear_basket(profile)
+
+            orders.ordered_foods.add(*saving_foods)
+
+            print("*" *5,"adding this foods for orders",saving_foods)
+            print("this is created order?", created, orders,"foods:",orders.ordered_foods)
+            this_food_is_ordered(profile)
             return redirect('food:foods_view')
 
     context = {

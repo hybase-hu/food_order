@@ -20,6 +20,7 @@ class SelectedFood(models.Model):
     quantity = models.IntegerField(default=1)
     total_price = models.FloatField()
     description = models.TextField()
+    ordered = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.food) + " | " + str(self.quantity) + "db : " + str(self.total_price)
@@ -38,12 +39,22 @@ def calculate_select_food_total_price(sender ,instance ,**kwargs):
 
 class Orders(models.Model):
     buyer = models.ForeignKey(Profile ,on_delete=models.CASCADE)
-    foods = models.ManyToManyField(SelectedFood)
+    ordered_foods = models.ManyToManyField(SelectedFood)
     total_price = models.IntegerField()
     deliver_location_city = models.CharField(max_length=100)
     deliver_location_street = models.CharField(max_length=100)
     deliver_location_zip = models.IntegerField()
-    comment = models.TextField()
+    comment = models.TextField(blank=True)
     payed_method = models.CharField(max_length=2 ,choices=PAYED_METHOD)
     created_at = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
+
+    def get_ordered_foods(self):
+        return self.ordered_foods.all()
+
+
+
+
+
+
 

@@ -116,6 +116,19 @@ select {
     .Xnavbar__links:hover {
       background-color: #ffd60a; }
 
+.m_navbar {
+  display: flex; }
+  .m_navbar__items {
+    list-style: none; }
+  .m_navbar__link {
+    padding: 1rem;
+    text-decoration: none;
+    color: #EEE;
+    text-transform: uppercase; }
+    .m_navbar__link:hover {
+      background-color: #ffd60a;
+      color: #001d3d; }
+
 .Xmodal {
   background-color: #001d3d !important;
   color: #EEE !important; }

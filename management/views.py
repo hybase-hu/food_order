@@ -8,25 +8,29 @@ from django.shortcuts import render
 from django.views.generic import UpdateView, ListView
 
 from food.models import Food
+from orders.models import Orders
+
 
 def is_manager_members(user):
     return user.groups.filter(name="manager").exists()
+
 
 class LoginUserView(LoginView):
     template_name = "management/login.html"
     model = User
 
 
-class FoodListView(LoginRequiredMixin,UserPassesTestMixin,ListView):
+class FoodListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     def test_func(self):
         return is_manager_members(self.request.user)
+
     login_url = '/management/login'
     redirect_field_name = '/management/management_food_list'
     model = Food
     template_name = 'management/food_list.html'
 
 
-class FoodUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
+class FoodUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         return is_manager_members(self.request.user)
 
@@ -38,3 +42,29 @@ class FoodUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
     success_url = "/management/food_list"
 
 
+class FoodOrdersView(LoginRequiredMixin, UserPassesTestMixin, ListView):
+
+    def test_func(self):
+        return is_manager_members(self.request.user)
+
+    login_url = '/management/login'
+    redirect_field_name = '/management/orders'
+    success_url = '/management/orders'
+    template_name = "management/orders.html"
+    model = Orders
+
+    def get_queryset(self):
+        return Orders.objects.filter(approved=False)
+
+
+class FoodOrdersUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    def test_func(self):
+        return is_manager_members(self.request.user)
+
+    login_url = '/management/login'
+    redirect_field_name = '/management/management_orders'
+    model = Orders
+    fields = ['approved']
+
+    template_name = "management/orders_update.html"
+    success_url = "/management/food_list"

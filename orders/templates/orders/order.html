@@ -65,6 +65,18 @@
         </div>
     </div>
 
+    {% if ordered_items.count > 0 %}This item is in progress{%endif%}
+    {% for food in ordered_items%}
+        <div class="Xcardview Xcardview__long">
+            <img src="{{food.food.food_pictures.url}}" alt="" class="Xcardview__sm_image">
+            <div class="Xcardview__container">
+                <div class="Xcardview__title"><a href="" class="Xlink">{{food.food}}</a></div>
+                <div class="Xcardview__body">{{food.description}}</div>
+                <div class="Xcardview__footer">{{food.quantity}} DB | {{food.total_price}} FT</div>
+            </div>
+        </div>
+    {% endfor %}
+
 </div>
 
 

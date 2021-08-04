@@ -1,0 +1,14 @@
+{% extends 'management_base.html' %}
+
+{% block content %}
+{% for object in object_list%}
+    <h1><a href="{% url 'management:management_orders_update' pk=object.pk %}">{{object}}</a></h1>
+    {{object.buyer.full_name}} | {{object.buyer.email}}
+    <hr>
+    {% for select_food in object.get_ordered_foods %}
+    {{select_food.food.food_code}}{{select_food.food.food_name}}<br>
+    {{select_food.quantity}} db<br>
+    {{select_food.description}}<br>
+    {% endfor %}
+{% endfor %}
+{% endblock content %}
