@@ -7,13 +7,15 @@ from profiles.forms import ProfileForm
 from profiles.models import Profile
 
 
-def food_orders_view(request):
+def get_food_orders_view(request):
+    print("1-------------")
     template_name = "orders/order.html"
     generate_uuid = get_generate_uuid(request)
     profile, created = Profile.objects.get_or_create(uuid=generate_uuid)
 
     if request.method == 'POST':
         food = Food.objects.get(pk=request.POST['pk'])
+        print("2-------------")
         this_selected_food = SelectedFood.objects.filter(buyer=profile, food=food).first()
 
         if this_selected_food is not None:
@@ -28,8 +30,7 @@ def food_orders_view(request):
                 description=request.POST['food_comment'],
                 quantity=request.POST['food_count']
             )
-
-
+        print("3-------------")
     context = {
         'basket_items': profile.get_selected_food(),
         'ordered_items': profile.get_under_order_food(),
@@ -41,7 +42,7 @@ def food_orders_view(request):
 class SelectedFoodDeleteView(DeleteView):
     model = SelectedFood
     template_name = "orders/confirm.html"
-    success_url = "/orders/"
+    success_url = "/orders/basket/"
 
 
 def this_food_is_ordered(profile):
@@ -49,6 +50,7 @@ def this_food_is_ordered(profile):
 
 
 def add_order_view(request):
+    print("-------- add order view")
     template_name = "orders/saving_order.html"
     generate_uuid = get_generate_uuid(request)
     profile, created = Profile.objects.get_or_create(uuid=generate_uuid)
@@ -62,6 +64,7 @@ def add_order_view(request):
             print("*" * 5, request.POST)
             profile_form.save()
             payment_method = request.POST['payments']
+            order_comment = request.POST['order_comment']
 
             orders, created = Orders.objects.get_or_create(
                 buyer=profile,
@@ -70,12 +73,13 @@ def add_order_view(request):
                 deliver_location_street=profile.deliver_location_street,
                 deliver_location_zip=profile.deliver_location_zip,
                 total_price=profile.get_selected_food_total_price(),
+                comment=order_comment
             )
 
             orders.ordered_foods.add(*saving_foods)
 
-            print("*" *5,"adding this foods for orders",saving_foods)
-            print("this is created order?", created, orders,"foods:",orders.ordered_foods)
+            print("*" * 5, "adding this foods for orders", saving_foods)
+            print("this is created order?", created, orders, "foods:", orders.ordered_foods)
             this_food_is_ordered(profile)
             return redirect('food:foods_view')
 

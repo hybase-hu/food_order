@@ -13,12 +13,34 @@
 </head>
 <body>
 {% include 'navbar.html' %}
-<div class="Xcontainer">
-    {% block content %}
-
-    {% endblock content %}
-
+<div class="_landing_menu">
+    <div class="_landing_menu_container">
+        <a href="{% url 'food:this_type_foods_view' '#2' %}"><img src="/static/img/design/pizza_icon.png" alt="pizza_menu_ico" class="_landing_menu_icon"></a>
+        <span class="_landing_menu_title">Pizza</span>
+    </div>
+    <div class="_landing_menu_container">
+        <a href="{% url 'food:this_type_foods_view' '#1' %}"><img src="/static/img/design/burger_icon.png" alt="burger_menu_ico" class="_landing_menu_icon"></a>
+        <span class="_landing_menu_title">Hamburger</span>
+    </div>
+    <div class="_landing_menu_container">
+        <a href="{% url 'food:this_type_foods_view' '#3' %}"><img src="/static/img/design/meal_icon.png" alt="other_meal_menu_ico" class="_landing_menu_icon"></a>
+        <span class="_landing_menu_title">Other</span>
+    </div>
 </div>
+
+<div class="_container">{% block content %}{% endblock content %}</div>
+
+<header class="_header">
+    <div class="_header_text_box">
+        <span class="_header_text_main">Food Order and management orders</span>
+        <span class="_header_text_sub">HyBase promo products</span>
+    </div>
+</header>
+
+
+<footer class="_footer">
+
+</footer>
 
 </body>
 

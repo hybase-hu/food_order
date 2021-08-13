@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/static/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {% block scripts %}{% endblock scripts%}
     <title>Management</title>
 </head>
 <body>
 {% include 'management_navbar.html' %}
-
+<div class="_container">
 {% block content %}
 
 {% endblock content %}
-
+</div>
 </body>
 </html>

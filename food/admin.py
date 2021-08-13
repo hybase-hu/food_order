@@ -4,6 +4,6 @@ from django.contrib import admin
 from food.models import Food
 
 class FoodAdmin(admin.ModelAdmin):
-    list_display = ('pk','food_name')
+    list_display = ('pk','food_code','food_name')
 
 admin.site.register(Food,FoodAdmin)

@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'management_base.html' %}
+
+{% block content %}
 <h1>{{object}}</h1>
 <form action="" method="POST">
     {% csrf_token %}
     {{form}}
     <input type="submit" value="Update">
 </form>
-
-</body>
-</html>
+{% endblock content %}

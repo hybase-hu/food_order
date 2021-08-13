@@ -1,5 +1,7 @@
-<ul class="m_navbar">
-    <li class="m_navbar__items"><a href="{% url 'management:management_food_list' %}" class="m_navbar__link">Menu</a></li>
-    <li class="m_navbar__items"><a href="{% url 'management:management_orders' %}" class="m_navbar__link">Orders</a></li>
-
-</ul>
+<div class="_navbar">
+    <ul>
+        <li class="_navbar__items"><a href="{% url 'management:management_food_list' %}" class="_navbar__links">Menu</a></li>
+        <li class="_navbar__items"><a href="{% url 'management:management_orders' %}" class="_navbar__links">Orders</a></li>
+        <li class="_navbar__items"><a href="{% url 'management:management_create_food' %}" class="_navbar__links">ADD NEW FOOD</a></li>
+    </ul>
+</div>

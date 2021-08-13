@@ -11,14 +11,14 @@ FOOD_TYPE = [
 ]
 
 
-def get_food_with_type(food_type):
-    qs = []
-    for obj in Food.objects.all():
-        print(obj.food_type, food_type[0])
-        if obj.food_type == food_type[0]:
-            qs.append(obj)
-    print(qs)
-    return qs
+# def get_foods_with_type(food_type):
+#     qs = []
+#     for obj in Food.objects.all():
+#         print(obj.food_type, food_type[0])
+#         if obj.food_type == food_type[0]:
+#             qs.append(obj)
+#     print(qs)
+#     return qs
 
 
 class Food(models.Model):

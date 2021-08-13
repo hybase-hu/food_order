@@ -1,12 +1,10 @@
 {% extends 'management_base.html' %}
 
 {% block content %}
-<form action="" method="post">
+<h1>{{object}}</h1>
+<form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{object}}
     {{form}}
-    <input type="submit" value="Approve">
+    <input type="submit" value="ADD">
 </form>
-
-
 {% endblock content %}

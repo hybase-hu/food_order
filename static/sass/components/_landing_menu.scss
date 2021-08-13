@@ -1,0 +1,35 @@
+._landing_menu {
+    padding:5rem;
+    background-color:$color-secondary-light;
+    display:flex;
+    flex-direction:row;
+
+    @media only screen and (max-width:1024px) {
+        padding:1rem;
+    }
+
+
+    &_container {
+        display:flex;
+        flex-direction:column;
+        margin:0 auto;
+
+    }
+
+     &_icon {
+        width:10rem;
+        height:10rem;
+        align-self:center;
+        &:hover {
+            transform:scale(1.12);
+            cursor:pointer;
+        }
+
+     }
+     &_title {
+        align-self:center;
+        text-transform:uppercase;
+        color:$color-primary;
+        font-size:1.4rem;
+     }
+}

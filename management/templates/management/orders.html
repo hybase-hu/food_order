@@ -1,14 +1,21 @@
 {% extends 'management_base.html' %}
-
+{% load static %}
+{% block scripts %}
+<script src="{% static '/management/js/management_orders.js' %}"></script>
+{% endblock scripts%}
 {% block content %}
+
+
 {% for object in object_list%}
-    <h1><a href="{% url 'management:management_orders_update' pk=object.pk %}">{{object}}</a></h1>
-    {{object.buyer.full_name}} | {{object.buyer.email}}
+<!--    <h1><a href="{% url 'management:management_orders_update' pk=object.pk %}">{{object}}</a></h1>-->
+    <h1><a href="{{object.get_absolute_path}}">{{object}}</a></h1>
+    {{object.buyer.full_name}} | {{object.buyer.email}} | {{object.buyer.phone_number}} ordered: <b>{{object.created_at|timesince}}</b>
     <hr>
     {% for select_food in object.get_ordered_foods %}
-    {{select_food.food.food_code}}{{select_food.food.food_name}}<br>
-    {{select_food.quantity}} db<br>
-    {{select_food.description}}<br>
+        {{select_food.food.food_code}}{{select_food.food.food_name}}<br>
+        {{select_food.quantity}} db<br>
+        {{select_food.description}}<br>
     {% endfor %}
+    Comments:{{object.comment}}
 {% endfor %}
 {% endblock content %}

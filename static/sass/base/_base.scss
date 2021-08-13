@@ -1,22 +1,21 @@
-.Xcontainer {
+._container {
     margin:2rem auto;
     width:70%;
-    background-color:$color-primary-dark;
     padding:3rem;
-
+    background-color:$color-primary-dark-opacity;
+    border-radius:1rem;
     @media only screen and (max-width:1024px) {
         width:auto;
         padding:1rem;
         font-size:2rem;
-
     }
-
 }
 
 body {
     margin: 0 !important;
     background-color:$color-primary !important;
-    color: $color-white !important;
+    color:$color-white !important;
+
 }
 
 .error {
@@ -34,16 +33,18 @@ body {
         filter:brightness(0.9);
     }
 }
-.Xlink {
+._link {
     text-decoration:none;
     color:$color-white;
 }
 
-.Xmt-5 {
+._mt-5 {
     margin-top:5px;
 }
-
-.Xlink_btn {
+._mt-15 {
+    margin-top:15px;
+}
+._link_btn {
     padding:0.4rem 1rem;
     text-decoration:none;
     color:$color-white;
@@ -51,9 +52,9 @@ body {
     text-align:center;
     @include border-radius;
     border:1px solid $color-primary;
-    align-self:flex-start;
+    align-self:flex-end;
     &:hover {
-        background-color:$color-primary;
+        background-color:$color-secondary;
         cursor:pointer;
 
     }
@@ -77,4 +78,8 @@ select {
     border-radius: 5px;
     border-style:none;
     border:1px solid $color-primary;
+}
+
+._shadow {
+    box-shadow: 0px 0px 37px 12px rgba(0,0,0,0.66);
 }

@@ -1,78 +1,78 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} | Food list {% endblock title%}
+{% block title %} | My Orders {% endblock title%}
 {% block content %}
-<div class="Xcardview_list">
+<div class="_cardview_list">
 
     {% for food in basket_items %}
 
-        <form action="{% url 'orders:foods_view'%}" method="post">
-        {%csrf_token%}
+        <form action="{% url 'orders:food_order_view'%}" method="post">
+        {% csrf_token %}
         <div class="modal fade" id="showDetails{{food.pk}}" data-bs-backdrop="static"
              data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-fullscreen-xl-down">
-            <div class="modal-content Xmodal">
+            <div class="modal-dialog modal-fullscreen-xl-down">
+                <div class="modal-content _modal">
 
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Orders : {{item}}</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
+                  <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Orders : {{item}}</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
 
-              <div class="modal-body">
-                <div class="form-floating">
-                  <textarea class="form-control" name="food_comment" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">
-                      {{food.description}}
-                  </textarea>
-                  <label for="floatingTextarea2">Comments</label>
+                  <div class="modal-body">
+                      <div class="form-floating">
+                          <textarea class="form-control" name="food_comment" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">
+                              {{food.description}}
+                          </textarea>
+                          <label for="floatingTextarea2">Comments</label>
+                      </div>
+                      <input type="number" class="XnumberInput Xmt-5" name="food_count" value="{{food.quantity}}" min="1" max="10">
+                  </div>
+
+                  <div class="modal-footer">
+                    <input type="hidden" name="pk" id="pk" value="{{food.food.pk}}">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Modify</button>
+                  </div>
                 </div>
-                  <input type="number" class="XnumberInput Xmt-5" name="food_count" value="{{food.quantity}}" min="1" max="10">
-              </div>
-
-              <div class="modal-footer">
-                <input type="hidden" name="pk" id="pk" value="{{food.food.pk}}">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Modify</button>
-              </div>
             </div>
-          </div>
         </div>
         </form>
 
 
 
-        <div class="Xcardview Xcardview__long">
-            <img src="{{food.food.food_pictures.url}}" alt="" class="Xcardview__sm_image">
-            <div class="Xcardview__container">
-                <div class="Xcardview__title"><a href="" class="Xlink">{{food.food}}</a></div>
-                <div class="Xcardview__body">{{food.description}}</div>
-                <div class="Xcardview__footer">{{food.quantity}} DB | {{food.total_price}} FT</div>
-                <div class="Xlink_btn Xmt-5" data-bs-toggle="modal" data-bs-target="#showDetails{{food.pk}}">EDIT</div>
-                <a class="Xlink_btn error Xmt-5" href="{% url 'orders:remove_from_basket' pk=food.pk %}">Remove</a>
+        <div class="_cardview _cardview__long _mt-15">
+            <img src="{{food.food.food_pictures.url}}" alt="" class="_cardview__sm_image">
+            <div class="_cardview__container">
+                <div class="_cardview__title"><a href="" class="_link">{{food.food}}</a></div>
+                <div class="_cardview__body">{{food.description}}</div>
+                <div class="_cardview__footer">{{food.quantity}} DB | {{food.total_price}} FT</div>
+                <div class="_link_btn _mt-5" data-bs-toggle="modal" data-bs-target="#showDetails{{food.pk}}">EDIT</div>
+                <a class="_link_btn error _mt-5" href="{% url 'orders:remove_from_basket' pk=food.pk %}">Remove</a>
             </div>
         </div>
 
     {% endfor %}
 
-    <div class="Xcardview Xcardview__long">
-        <div class="Xcardview__container">
+    <div class="_cardview _cardview__long _mt-15">
+        <div class="_cardview__container">
             {% if basket_items %}
             <div>Total Price: {{total_price}} FT</div>
-             <a class="Xlink_btn warning" href="{% url 'orders:save_order'%}">I AM ORDER</a>
+             <a class="_link_btn warning" href="{% url 'orders:save_order'%}">I AM ORDER</a>
             {% else %}
-            <div>NO item in basket</div>
+            <div class="inform warning">NO item in basket</div>
             {% endif %}
         </div>
     </div>
 
-    {% if ordered_items.count > 0 %}This item is in progress{%endif%}
-    {% for food in ordered_items%}
-        <div class="Xcardview Xcardview__long">
-            <img src="{{food.food.food_pictures.url}}" alt="" class="Xcardview__sm_image">
-            <div class="Xcardview__container">
-                <div class="Xcardview__title"><a href="" class="Xlink">{{food.food}}</a></div>
-                <div class="Xcardview__body">{{food.description}}</div>
-                <div class="Xcardview__footer">{{food.quantity}} DB | {{food.total_price}} FT</div>
+    {% if ordered_items.count > 0 %}This item is in progress{% endif %}
+    {% for food in ordered_items %}
+        <div class="_cardview _cardview__long">
+            <img src="{{ food.food.food_pictures.url }}" alt="" class="_cardview__sm_image">
+            <div class="_cardview__container">
+                <div class="_cardview__title"><a href="" class="_link">{{food.food}}</a></div>
+                <div class="_cardview__body">{{food.description}}</div>
+                <div class="_cardview__footer">{{food.quantity}} DB | {{food.total_price}} FT</div>
             </div>
         </div>
     {% endfor %}

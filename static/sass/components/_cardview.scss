@@ -1,4 +1,4 @@
-.Xcardview_list {
+._cardview_list {
     display:flex;
     flex-wrap:wrap;
     margin:0 auto;
@@ -9,7 +9,7 @@
 }
 
 
-.Xcardview {
+._cardview {
     width:49%;
     @media only screen and (max-width:1024px) {
         width:100%;
@@ -19,33 +19,36 @@
         width:100%;
     }
 
-    padding: 0.4rem 0;
+    padding: 1rem;
 //     border-bottom:1px solid $color-white;
-    border-top: 1px solid $color-white;
+//     border-top: 1px solid $color-white;
     display:flex;
-
+    background-color:$color-primary-dark;
+    border-radius:1rem;
 
     &__sm_image {
-        width:5rem;
-        height:5rem;
+
+        max-width:40%;
+        min-width:40%;
+        width:auto;
         object-fit:cover;
+
 
     }
 
     &__container {
         display:flex;
         flex-direction:column;
-        padding: 1rem 0;
         padding-left:1rem;
-        padding-top:0;
     }
 
     &__title {
         width:100%;
+        color:$color-white;
     }
 
     &__body {
-
+        color:$color-secondary-light;
     }
     &__footer {
         width:max-content;
