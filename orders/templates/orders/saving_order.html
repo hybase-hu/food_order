@@ -5,10 +5,10 @@
 {% block title %} | My Orders {% endblock title%}
 {% block content %}
 
-<div class="Xcardview_list">
+<div class="_cardview_list">
     <b>Your orders:</b>
     {% for food in saving_foods%}
-        <div class="Xcardview Xcardview__long">
+        <div class="_cardview _cardview__long">
                {{food}} [{{food.description}}]
         </div>
     {% endfor %}
@@ -19,7 +19,7 @@
     <br/>
 
     {% if saving_foods %}
-    <form action="" class="Xform" method="post">
+    <form action="" class="_form" method="post">
         {% csrf_token %}
         {{profile_form}}
         <label for="payments">Choose Payment method:</label>
@@ -34,7 +34,7 @@
         <input type="submit" value="ORDER" class="XBtn warning Xmt-5">
     </form>
     {% else %}
-    <div class="Xcardview__title error">The basket is empty</div>
+    <div class="_cardview__title error">The basket is empty</div>
     {%endif%}
 
 </div>

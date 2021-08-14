@@ -9,3 +9,4 @@ urlpatterns = [
     path("remove/<pk>/",SelectedFoodDeleteView.as_view(),name="remove_from_basket")
 
 ]
+

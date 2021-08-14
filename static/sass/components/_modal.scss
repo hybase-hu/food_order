@@ -1,4 +1,21 @@
 ._modal {
     background-color: $color-primary !important;
     color: $color-white !important;
+
+
+    @media only screen and (max-width:1024px) {
+        font-size:3rem !important;
+        button {
+            height:10rem;
+            text-decoration:uppercase;
+            font-size:3rem;
+            padding:2rem;
+        }
+
+        input {
+            height:10rem;
+            font-size:4rem;
+        }
+
+    }
 }

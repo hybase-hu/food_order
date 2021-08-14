@@ -1,5 +1,41 @@
-.Xform {
+._form {
     width: 100%;
     display:flex;
     flex-direction:column;
+
+
+    @media only screen and (max-width:1024px) {
+        font-size:1.5rem;
+        input, textarea {
+            font-size:2rem !important;
+        }
+    }
+
+    input[type=file]::file-selector-button {
+        @include border-radius;
+        background-color:$color-primary;
+        color:$color-white;
+        border-style:none;
+        padding:1rem 2rem;
+
+    }
+    input[type="checkbox"] {
+        width:2rem;
+        height:2rem;
+        &::before {
+            content:'';
+            background:$color-secondary !important;
+        }
+    }
+
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+        filter:invert(1);
+    }
+
+
+
+
+
+
+
 }

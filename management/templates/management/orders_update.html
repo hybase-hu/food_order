@@ -1,11 +1,11 @@
 {% extends 'management_base.html' %}
 
 {% block content %}
-<form action="" method="post">
+<form action="" class="_form" method="post">
     {% csrf_token %}
     {{object}}
     {{form}}
-    <input type="submit" value="Approve">
+    <input type="submit" class="_inform _mt-5" value="Approve">
 </form>
 
 

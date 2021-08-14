@@ -16,21 +16,29 @@ body {
   color: #EEE !important; }
 
 .error {
-  background-color: red !important;
+  background-color: #ff7b00 !important;
   color: #0d0e11 !important; }
   .error:hover {
     filter: brightness(0.8);
     color: #EEE !important; }
 
 .warning {
-  background-color: yellow !important;
+  background-color: #ff7b00 !important;
   color: #0d0e11 !important; }
   .warning:hover {
+    filter: brightness(0.9); }
+
+.success {
+  background-color: #00CC00 !important;
+  color: #0d0e11 !important; }
+  .success:hover {
     filter: brightness(0.9); }
 
 ._link {
   text-decoration: none;
   color: #EEE; }
+  ._link:hover {
+    color: #c49c7f; }
 
 ._mt-5 {
   margin-top: 5px; }
@@ -46,14 +54,25 @@ body {
   text-align: center;
   border-radius: 4px;
   border: 1px solid #08090d;
-  align-self: flex-end; }
+  align-self: flex-end;
+  font-weight: 700; }
   ._link_btn:hover {
     background-color: #d64e10;
     cursor: pointer; }
 
+hr {
+  width: 80%;
+  opacity: 50%; }
+
+@media only screen and (max-width: 1024px) {
+  ._mobile_input, textarea {
+    font-size: 3rem !important;
+    padding: 3rem 0.3rem !important;
+    height: 20rem !important; } }
+
 input, input[type="tel"], textarea {
   background-color: #0d0e11 !important;
-  color: #d64e10 !important;
+  color: #c49c7f !important;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   border-style: none;
@@ -75,11 +94,12 @@ select {
   flex-wrap: wrap;
   margin: 0 auto;
   width: 100%;
-  justify-content: space-between; }
+  justify-content: center; }
 
 ._cardview {
-  width: 49%;
+  width: 44%;
   padding: 1rem;
+  margin-right: 5px;
   display: flex;
   background-color: #0d0e11;
   border-radius: 1rem; }
@@ -87,7 +107,7 @@ select {
     ._cardview {
       width: 100%; } }
   ._cardview__long {
-    width: 100%; }
+    width: auto; }
   ._cardview__sm_image {
     max-width: 40%;
     min-width: 40%;
@@ -96,12 +116,14 @@ select {
   ._cardview__container {
     display: flex;
     flex-direction: column;
-    padding-left: 1rem; }
+    padding-left: 1rem;
+    flex: 1; }
   ._cardview__title {
     width: 100%;
     color: #EEE; }
   ._cardview__body {
-    color: #c49c7f; }
+    color: #c49c7f;
+    flex: 1; }
   ._cardview__footer {
     width: max-content; }
 
@@ -139,6 +161,17 @@ select {
 ._modal {
   background-color: #08090d !important;
   color: #EEE !important; }
+  @media only screen and (max-width: 1024px) {
+    ._modal {
+      font-size: 3rem !important; }
+      ._modal button {
+        height: 10rem;
+        text-decoration: uppercase;
+        font-size: 3rem;
+        padding: 2rem; }
+      ._modal input {
+        height: 10rem;
+        font-size: 4rem; } }
 
 ._header {
   height: 100vh;
@@ -202,28 +235,87 @@ select {
     font-size: 1.4rem; }
 
 .inform {
-  width: 100%;
+  width: auto;
   padding: 1rem;
   text-align: center;
   border-radius: 4px; }
 
 ._footer {
-  height: 20rem;
   background-color: #0d0e11;
-  padding: 4rem; }
+  padding: 4rem;
+  display: flex;
+  flex-direction: column; }
+  ._footer ul {
+    display: flex;
+    flex-direction: row;
+    align-self: center; }
+  ._footer_img {
+    height: 12rem;
+    width: 12rem;
+    display: block;
+    margin: 0 auto; }
+  ._footer_item {
+    align-self: center;
+    text-align: center;
+    list-style: none;
+    margin: 0 auto; }
+  ._footer_link {
+    text-decoration: none;
+    color: #35373c;
+    padding: 0.5rem 1rem;
+    background-color: #c49c7f;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-right: 0.7rem;
+    text-transform: uppercase; }
+    ._footer_link:hover {
+      color: #c49c7f;
+      background-color: #35373c; }
+  ._footer_info {
+    color: #d64e10;
+    border-top: 0.7px solid #EEE;
+    align-self: center;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 1rem; }
 
-.XnumberInput {
+._img_view {
+  object-fit: cover;
+  margin: 0 auto;
+  width: 50%;
+  transform: translateX(50%); }
+
+._numberInput {
   width: 100%;
   padding: 1rem;
   color: #EEE;
   background-color: #0d0e11;
   border-radius: 0.2rem; }
-  .XnumberInput input[type="number" i] {
+  ._numberInput input[type="number" i] {
     padding: 0.3rem !important;
     width: 1rem !important;
     height: 1rem !important; }
 
-.Xform {
+._form {
   width: 100%;
   display: flex;
   flex-direction: column; }
+  @media only screen and (max-width: 1024px) {
+    ._form {
+      font-size: 1.5rem; }
+      ._form input, ._form textarea {
+        font-size: 2rem !important; } }
+  ._form input[type=file]::file-selector-button {
+    border-radius: 4px;
+    background-color: #08090d;
+    color: #EEE;
+    border-style: none;
+    padding: 1rem 2rem; }
+  ._form input[type="checkbox"] {
+    width: 2rem;
+    height: 2rem; }
+    ._form input[type="checkbox"]::before {
+      content: '';
+      background: #d64e10 !important; }
+  ._form input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); }

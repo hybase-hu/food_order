@@ -19,11 +19,13 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+
     path('admin/', admin.site.urls),
-    path('',include('food.urls',namespace="food")),
-    path('orders/',include('orders.urls',namespace="orders")),
-    path('management/',include('management.urls',namespace="management"))
+    path('orders/', include('orders.urls', namespace="orders")),
+    path('management/', include('management.urls', namespace="management")),
+    path('', include('food.urls', namespace="food")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+handler404 = 'food_order.views.error_404'

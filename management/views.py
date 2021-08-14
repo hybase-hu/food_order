@@ -28,7 +28,7 @@ class FoodListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
         return is_manager_members(self.request.user)
 
     login_url = '/management/login'
-    redirect_field_name = '/management/management_food_list'
+    redirect_field_name = '/management/entry'
     model = Food
     template_name = 'management/food_list.html'
 
@@ -38,11 +38,11 @@ class FoodUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return is_manager_members(self.request.user)
 
     login_url = '/management/login'
-    redirect_field_name = '/management/management_food_update'
+    redirect_field_name = '/management/food_update'
     model = Food
     fields = ['food_code', 'food_name', 'food_pictures', 'food_description', 'food_price', 'food_type']
     template_name = "management/food_update.html"
-    success_url = "/management/food_list"
+    success_url = "/management/entry/"
 
 
 class FoodOrdersView(LoginRequiredMixin, UserPassesTestMixin, ListView):
@@ -65,7 +65,7 @@ class FoodOrdersUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return is_manager_members(self.request.user)
 
     login_url = '/management/login'
-    redirect_field_name = '/management/management_orders'
+    redirect_field_name = '/management/orders'
     model = Orders
     form_class = FoodOrdersUpdateForm
     # fields = ['approved','expected_delivery_time']
@@ -78,7 +78,7 @@ class FoodCreateView(LoginRequiredMixin,UserPassesTestMixin,CreateView):
         return is_manager_members(self.request.user)
 
     login_url = '/management/login'
-    success_url = "/management/"
+    success_url = "/management/entry/"
     model = Food
     fields = ['food_code','food_name','food_pictures','food_description','food_price','food_type']
     template_name = 'management/food_create.html'

@@ -1,5 +1,47 @@
 ._footer {
-    height:20rem;
+
     background-color:$color-primary-dark;
     padding:4rem;
+    display:flex;
+    flex-direction:column;
+    ul {
+        display:flex;
+        flex-direction:row;
+        align-self: center;
+    }
+    &_img {
+        height: 12rem;
+        width: 12rem;
+        display:block;
+        margin:0 auto;
+    }
+    &_item {
+        align-self: center;
+        text-align: center;
+        list-style:none;
+        margin:0 auto;
+    }
+    &_link {
+        text-decoration:none;
+        color:$color-secondary-dark;
+        padding:0.5rem 1rem;
+        background-color:$color-secondary-light;
+        @include border-radius;
+        font-size:0.8rem;
+        margin-right:0.7rem;
+        text-transform:uppercase;
+        &:hover {
+            color:$color-secondary-light;
+            background-color:$color-secondary-dark;
+        }
+    }
+
+    &_info {
+        color:$color-secondary;
+        border-top:0.7px solid $color-white;
+        align-self: center;
+        text-align: center;
+        text-transform:uppercase;
+        padding:1rem;
+    }
 }

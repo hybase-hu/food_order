@@ -5,17 +5,31 @@
 {% endblock scripts%}
 {% block content %}
 
-
+<div id="list">
 {% for object in object_list%}
 <!--    <h1><a href="{% url 'management:management_orders_update' pk=object.pk %}">{{object}}</a></h1>-->
-    <h1><a href="{{object.get_absolute_path}}">{{object}}</a></h1>
-    {{object.buyer.full_name}} | {{object.buyer.email}} | {{object.buyer.phone_number}} ordered: <b>{{object.created_at|timesince}}</b>
-    <hr>
-    {% for select_food in object.get_ordered_foods %}
-        {{select_food.food.food_code}}{{select_food.food.food_name}}<br>
-        {{select_food.quantity}} db<br>
-        {{select_food.description}}<br>
-    {% endfor %}
-    Comments:{{object.comment}}
+    <div class="_cardview _cardview__long _mt-5" id="list">
+        <div class="_cardview__container ">
+            <div class="_cardview__title">
+                <a class="_link" href="{{object.get_absolute_path}}">
+                <b>{{object.buyer.full_name}} | {{object.buyer.email}} | {{object.buyer.phone_number}} ordered:{{object.created_at|timesince}}</b>
+                </a>
+            </div>
+            <hr>
+
+            {% for select_food in object.get_ordered_foods %}
+            <div class="_cardview__body _mt-5 ">
+                {{select_food.food.food_code}} - {{select_food.food.food_name}}<br>
+                {{select_food.quantity}} db<br>
+                {{select_food.description}}<br>
+            </div>
+            <hr>
+             {% endfor %}
+            <div class="inform warning _mt-5">TOTAL PRICE: {{object.total_price}} FT</div>
+            <div class="_cardview_footer inform">Comments:{{object.comment}}</div>
+        </div>
+    </div>
 {% endfor %}
+</div>
 {% endblock content %}
+

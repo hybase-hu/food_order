@@ -6,7 +6,7 @@ from management.views import FoodListView, FoodUpdateView, LoginUserView, FoodOr
 app_name = "management"
 
 urlpatterns = [
-    path('', FoodListView.as_view(), name="management_food_list"),
+    path('entry/', FoodListView.as_view(), name="management_food_list"),
     path('login/', LoginUserView.as_view(), name="login"),
     path('food_update/<pk>/', FoodUpdateView.as_view(), name="management_food_update"),
     path('orders/', FoodOrdersView.as_view(), name="management_orders"),

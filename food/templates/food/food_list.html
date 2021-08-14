@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} | Food list {% endblock title%}
+{% block title %} | Foods list {% endblock title%}
 {% block script %}
 <script src="{% static '/food/js/food.js' %}" defer></script>
 {% endblock script %}
@@ -18,16 +18,17 @@
         <div class="modal-content _modal">
 
           <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Orders : {{item}}</h5>
+                <h5 class="modal-title _modal" id="staticBackdropLabel">Orders : {{item}}</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
           <div class="modal-body">
                 <div class="form-floating">
-                  <textarea class="form-control"  name="food_comment" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                  <textarea class="form-control _mobile_input"  name="food_comment" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
                   <label for="floatingTextarea2">Comments</label>
                 </div>
-                <input type="number" class="XnumberInput _mt-5" name="food_count" value="1"  min="1" max="10">
+                <label for="food_count_number">How many?</label>
+                <input type="number" class="_numberInput _mt-5" id="food_count_number" name="food_count" value="1"  min="1" max="10">
           </div>
 
           <div class="modal-footer">
@@ -46,8 +47,8 @@
         <img src="{{item.food_pictures.url}}" alt="{{item.food}} pictures" class="_cardview__sm_image">
         <div class="_cardview__container ">
             <div class="_cardview__title"><b>{{item.food_code|upper}}: </b>{{item.food_name|upper}}</div>
+            <div class=" _mt-5">{{item.food_price}} FT</div>
             <div class="_cardview__body _mt-5 ">{{item.food_description | truncatewords:10}}</div>
-            <div class="_cardview__footer _mt-5">{{item.food_price}} FT</div>
             <div class="_link_btn _mt-5" data-bs-toggle="modal" data-bs-target="#showDetails{{item.pk}}">BUY</div>
         </div>
     </div>

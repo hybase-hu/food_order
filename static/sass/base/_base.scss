@@ -19,7 +19,7 @@ body {
 }
 
 .error {
-    background-color:red !important;
+    background-color:$color-warning !important;
     color:$color-primary-dark !important;
     &:hover {
         filter:brightness(0.8);
@@ -27,15 +27,27 @@ body {
     }
 }
 .warning {
-    background-color:yellow !important;
+    background-color:$color-warning !important;
     color:$color-primary-dark !important;
     &:hover {
         filter:brightness(0.9);
     }
 }
+
+.success {
+    background-color:$color-success !important;
+    color:$color-primary-dark !important;
+    &:hover {
+        filter:brightness(0.9);
+    }
+}
+
 ._link {
     text-decoration:none;
     color:$color-white;
+    &:hover {
+        color:$color-secondary-light;
+    }
 }
 
 ._mt-5 {
@@ -53,6 +65,7 @@ body {
     @include border-radius;
     border:1px solid $color-primary;
     align-self:flex-end;
+    font-weight:700;
     &:hover {
         background-color:$color-secondary;
         cursor:pointer;
@@ -60,11 +73,26 @@ body {
     }
 }
 
+hr {
+    width:80%;
+    opacity:50%;
+
+}
+
+._mobile_input, textarea {
+    @media only screen and (max-width:1024px) {
+        font-size:3rem !important;
+        padding:3rem 0.3rem !important;
+        height:20rem !important;
+
+    }
+
+}
 
 
 input, input[type="tel"],textarea {
     background-color:$color-primary-dark !important;
-    color:$color-secondary !important;
+    color:$color-secondary-light !important;
     padding: 0.5rem 1rem;
     border-radius: 5px;
     border-style:none;

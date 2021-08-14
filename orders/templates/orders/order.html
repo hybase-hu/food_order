@@ -15,18 +15,16 @@
                 <div class="modal-content _modal">
 
                   <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Orders : {{item}}</h5>
+                        <h5 class="modal-title _modal" id="staticBackdropLabel">Orders : {{food}}</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
 
                   <div class="modal-body">
                       <div class="form-floating">
-                          <textarea class="form-control" name="food_comment" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">
-                              {{food.description}}
-                          </textarea>
+                          <textarea class="form-control" name="food_comment" id="floatingTextarea2" style="height: 100px">{{food.description|safe}}</textarea>
                           <label for="floatingTextarea2">Comments</label>
                       </div>
-                      <input type="number" class="XnumberInput Xmt-5" name="food_count" value="{{food.quantity}}" min="1" max="10">
+                      <input type="number" class="_numberInput _mt-15" name="food_count" value="{{food.quantity}}" min="1" max="10">
                   </div>
 
                   <div class="modal-footer">
@@ -55,14 +53,12 @@
     {% endfor %}
 
     <div class="_cardview _cardview__long _mt-15">
-        <div class="_cardview__container">
-            {% if basket_items %}
-            <div>Total Price: {{total_price}} FT</div>
-             <a class="_link_btn warning" href="{% url 'orders:save_order'%}">I AM ORDER</a>
-            {% else %}
-            <div class="inform warning">NO item in basket</div>
-            {% endif %}
-        </div>
+        {% if basket_items %}
+        <div class="_cardview__body">Total Price: {{total_price}} FT</div>
+         <a class="_link_btn success" href="{% url 'orders:save_order'%}">I AM ORDER</a>
+        {% else %}
+        <div class="inform warning">NO item in basket</div>
+        {% endif %}
     </div>
 
     {% if ordered_items.count > 0 %}This item is in progress{% endif %}
