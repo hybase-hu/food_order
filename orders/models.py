@@ -37,7 +37,7 @@ def calculate_select_food_total_price(sender, instance, **kwargs):
 
 
 class Orders(models.Model):
-    buyer = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    buyer = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="buyers_orders")
     ordered_foods = models.ManyToManyField(SelectedFood)
     total_price = models.IntegerField()
     deliver_location_city = models.CharField(max_length=100)

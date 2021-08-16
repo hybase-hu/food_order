@@ -23,6 +23,9 @@ class Profile(models.Model):
     def get_under_order_food(self):
         return self.profiles_selected_food.filter(ordered=True)
 
+    def get_my_orders(self):
+        return self.buyers_orders.order_by('-created_at')
+
     def get_selected_food_total_price(self):
         foods = self.get_selected_food()
         total_price = 0

@@ -40,6 +40,9 @@ body {
   ._link:hover {
     color: #c49c7f; }
 
+._padding-1 {
+  padding: 1rem !important; }
+
 ._mt-5 {
   margin-top: 5px; }
 
@@ -98,17 +101,20 @@ select {
 
 ._cardview {
   width: 44%;
+  overflow: hidden;
   padding: 1rem;
   margin-right: 5px;
   display: flex;
   background-color: #0d0e11;
-  border-radius: 1rem; }
+  border-radius: 4px; }
   @media only screen and (max-width: 1024px) {
     ._cardview {
-      width: 100%; } }
+      width: 100%;
+      padding: 0; } }
   ._cardview__long {
-    width: auto; }
+    width: 100%; }
   ._cardview__sm_image {
+    display: inline;
     max-width: 40%;
     min-width: 40%;
     width: auto;
@@ -117,6 +123,7 @@ select {
     display: flex;
     flex-direction: column;
     padding-left: 1rem;
+    padding-right: 1rem;
     flex: 1; }
   ._cardview__title {
     width: 100%;
@@ -124,8 +131,19 @@ select {
   ._cardview__body {
     color: #c49c7f;
     flex: 1; }
-  ._cardview__footer {
-    width: max-content; }
+
+._detail_cardview {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #0d0e11;
+  border-radius: 4px;
+  overflow: hidden; }
+  ._detail_cardview_image {
+    display: inline;
+    margin-bottom: 1rem;
+    width: 100%;
+    object-fit: cover; }
 
 ._navbar {
   margin: 0 auto;
@@ -183,10 +201,7 @@ select {
   ._header_text_box {
     align-self: center;
     display: flex;
-    flex-direction: column;
-    animation-name: moveFromLeft;
-    animation-duration: 3s;
-    animation-delay: 5s; }
+    flex-direction: column; }
   ._header_text_main {
     margin-left: 2rem;
     font-size: 3rem;

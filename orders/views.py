@@ -12,7 +12,7 @@ def get_food_orders_view(request):
     template_name = "orders/order.html"
     generate_uuid = get_generate_uuid(request)
     profile, created = Profile.objects.get_or_create(uuid=generate_uuid)
-
+    print("**********",profile.get_my_orders())
     if request.method == 'POST':
         food = Food.objects.get(pk=request.POST['pk'])
         print("2-------------")
@@ -21,6 +21,7 @@ def get_food_orders_view(request):
         if this_selected_food is not None:
             this_selected_food.quantity = request.POST['food_count']
             this_selected_food.description = request.POST['food_comment']
+            this_selected_food.ordered=False
             this_selected_food.save()
 
         else:
@@ -33,7 +34,8 @@ def get_food_orders_view(request):
         print("3-------------")
     context = {
         'basket_items': profile.get_selected_food(),
-        'ordered_items': profile.get_under_order_food(),
+        # 'ordered_items': profile.get_under_order_food(),
+        'ordered_items': profile.get_my_orders(),
         'total_price': profile.get_selected_food_total_price()
     }
     return render(request=request, context=context, template_name=template_name)

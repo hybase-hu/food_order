@@ -1,6 +1,7 @@
 # Create your views here.
 
 from django.shortcuts import render
+from django.views.generic import DetailView
 from django.views.generic.list import ListView
 
 from food.models import Food, FOOD_TYPE
@@ -15,6 +16,9 @@ class FoodsView(ListView):
         qs = Food.objects.all()
         return qs
 
+class ThisFoodView(DetailView):
+    model = Food
+    template_name = "food/food_view.html"
 
 def get_foods_with_type(request, food_type):
     print("food type:", food_type)

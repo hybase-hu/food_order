@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load tz %}
 
 {% block title %} | My Orders {% endblock title%}
 {% block content %}
@@ -50,30 +51,45 @@
             </div>
         </div>
 
+    {% empty %}
+    <div class="inform warning">NO item in basket</div>
     {% endfor %}
+</div>
 
-    <div class="_cardview _cardview__long _mt-15">
-        {% if basket_items %}
-        <div class="_cardview__body">Total Price: {{total_price}} FT</div>
-         <a class="_link_btn success" href="{% url 'orders:save_order'%}">I AM ORDER</a>
-        {% else %}
-        <div class="inform warning">NO item in basket</div>
-        {% endif %}
+
+
+    <div class="_cardview _cardview__long _mt-15 _padding-1">
+            {% if basket_items %}
+            <div class="_cardview__body">Total Price: {{total_price}} FT</div>
+            <div class="_cardview__footer"><a class="_link_btn success _mt-15" href="{% url 'orders:save_order'%}">I AM ORDER</a></div>
+            {% endif %}
     </div>
 
-    {% if ordered_items.count > 0 %}This item is in progress{% endif %}
-    {% for food in ordered_items %}
-        <div class="_cardview _cardview__long">
-            <img src="{{ food.food.food_pictures.url }}" alt="" class="_cardview__sm_image">
+    {% if ordered_items.count > 0 %}<div class="inform _mt-15 ">This item is in progress</div>{% endif %}
+<div class="_cardview_list">
+    {% for order in ordered_items %}
+        <div class="_cardview _cardview__long _mt-15">
+
             <div class="_cardview__container">
-                <div class="_cardview__title"><a href="" class="_link">{{food.food}}</a></div>
-                <div class="_cardview__body">{{food.description}}</div>
-                <div class="_cardview__footer">{{food.quantity}} DB | {{food.total_price}} FT</div>
+<!--                <div class="_cardview__title"><a href="" class="_link">{{food.food}}</a></div>-->
+                <div class="_cardview__body">Ordered id: {{order.pk}}</div>
+                <div class="_cardview__title">Order time: {{order.created_at |timezone:"Europe/Budapest"}}</div>
+                <div class="_cardview__body">Approved time: {{order.approved_time|timezone:"Europe/Budapest"}}</div>
+                <div class="_cardview__footer">Expected delivery time : {{order.expected_delivery_time|timezone:"Europe/Budapest"}} </div>
+                <div class="_cardview__footer">Total Price : {{order.total_price}} FT </div>
+
+                {% for food in order.get_ordered_foods %}
+                <hr>
+                <div class="_cardview__footer">{{food}}</div>
+                {% endfor %}
+
+
             </div>
         </div>
     {% endfor %}
-
 </div>
+
+
 
 
 

@@ -9,16 +9,15 @@
 
 
 <div class="_cardview_list">
-{% for item in object_list %}
 
     <form action="{% url 'orders:food_order_view'%}" method="post">
     {%csrf_token%}
-    <div class="modal fade" id="showDetails{{item.pk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="showDetails{{object.pk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-fullscreen-xl-down">
         <div class="modal-content _modal">
 
           <div class="modal-header">
-                <h5 class="modal-title _modal" id="staticBackdropLabel">Orders : {{item}}</h5>
+                <h5 class="modal-title _modal" id="staticBackdropLabel">Orders : {{object}}</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
@@ -32,7 +31,7 @@
           </div>
 
           <div class="modal-footer">
-            <input type="hidden" name="pk" id="pk" value="{{item.pk}}">
+            <input type="hidden" name="pk" id="pk" value="{{object.pk}}">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">To the basket</button>
           </div>
@@ -43,19 +42,16 @@
     </form>
 
 
-    <div class="_cardview _mt-5">
-        <img src="{{item.food_pictures.url}}" alt="{{item.food}} pictures" class="_cardview__sm_image">
+    <div class="_detail_cardview _mt-5">
+        <img src="{{object.food_pictures.url}}" alt="{{object.food}} pictures" class="_detail_cardview_image">
         <div class="_cardview__container ">
-            <div class="_cardview__title"><b><a class="_link" href="{% url 'food:get_this_food' pk=item.pk %}">{{item.food_code|upper}}:{{item.food_name|upper}}</a> </b></div>
-            <div class=" _mt-5">{{item.food_price}} FT</div>
-            <div class="_cardview__body _mt-5 ">{{item.food_description | truncatewords:10}}</div>
-            <div class="_link_btn _mt-5" data-bs-toggle="modal" data-bs-target="#showDetails{{item.pk}}">BUY</div>
+            <div class="_cardview__title"><b>{{object.food_code|upper}}: </b>{{object.food_name|upper}}</div>
+            <div class=" _mt-5">{{object.food_price}} FT</div>
+            <div class="_cardview__body _mt-5 ">{{object.food_description }}</div>
+            <div class="_link_btn _mt-5" data-bs-toggle="modal" data-bs-target="#showDetails{{object.pk}}">BUY</div>
         </div>
     </div>
 
-{% empty %}
-    <div class="inform warning">NO ITEM</div>
-{% endfor %}
 </div>
 
 {% endblock content %}

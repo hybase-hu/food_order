@@ -1,5 +1,6 @@
 
 older_data = []
+first_run = true
 const _list = document.getElementById('list')
 console.log(_list)
 function callNewsOrder() {
@@ -7,22 +8,16 @@ function callNewsOrder() {
         type:'GET',
         url: '/management/orders/json/',
         success:function(response) {
-            if (older_data.length != response.length) {
+            if (older_data.length != response.length && first_run == true) {
                 older_data = response
-                response.forEach(object => {
-                    console.log(object['pk'] + " " + object.fields)
-                    cardview_list.innerHTML += `
-                        <div class="_cardview _mt-5">
-                        <img src="{{item.food_pictures.url}}" alt="{{item.food}} pictures" class="_cardview__sm_image">
-                        <div class="_cardview__container ">
-                            <div class="_cardview__title"><b><a href="{% url 'management:management_food_update' pk=item.pk %}" class="_link">{{item.food_code|upper}}: </b>{{item.food_name|upper}}</a></div>
-                            <div class=" _mt-5">{{item.food_price}} FT</div>
-                            <div class="_cardview__body _mt-5 ">{{item.food_description | truncatewords:10}}</div>
-                        </div>
-                    </div>
-                    `
-//
-                })
+                if (first_run) {
+                    first_run = false
+                }
+
+                if (first_run == false) {
+                    alert("new order received")
+                    first_run = true
+                }
             }
         },
         error:function(error) {

@@ -9,7 +9,7 @@
     <b>Your orders:</b>
     {% for food in saving_foods%}
         <div class="_cardview _cardview__long">
-               {{food}} [{{food.description}}]
+               {{food}} [Comment: {{food.description}}]
         </div>
     {% endfor %}
     <hr>
@@ -31,7 +31,7 @@
         </select>
         <laber for="order_comment">Comments</laber>
         <textarea name="order_comment" id="order_comment" placeholder="Comments"></textarea>
-        <input type="submit" value="ORDER" class="XBtn warning Xmt-5">
+        <input type="submit" value="ORDER" class="_btn warning _mt-5">
     </form>
     {% else %}
     <div class="_cardview__title error">The basket is empty</div>

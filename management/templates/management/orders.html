@@ -1,7 +1,8 @@
 {% extends 'management_base.html' %}
 {% load static %}
+{% load tz %}
 {% block scripts %}
-<script src="{% static '/management/js/management_orders.js' %}"></script>
+
 {% endblock scripts%}
 {% block content %}
 
@@ -12,8 +13,11 @@
         <div class="_cardview__container ">
             <div class="_cardview__title">
                 <a class="_link" href="{{object.get_absolute_path}}">
-                <b>{{object.buyer.full_name}} | {{object.buyer.email}} | {{object.buyer.phone_number}} ordered:{{object.created_at|timesince}}</b>
+                <b>{{object.buyer.full_name}} | {{object.buyer.email}} | {{object.buyer.phone_number}} ordered:{{object.created_at|timezone:"Europe/Budapest"|timesince}}</b>
                 </a>
+            </div>
+            <div class="_cardview__title">
+                <b>{{object.deliver_location_city}} - {{object.deliver_location_street}} | {{object.deliver_location_zip}}</b>
             </div>
             <hr>
 
@@ -25,11 +29,13 @@
             </div>
             <hr>
              {% endfor %}
-            <div class="inform warning _mt-5">TOTAL PRICE: {{object.total_price}} FT</div>
+
             <div class="_cardview_footer inform">Comments:{{object.comment}}</div>
+            <div class="inform _mt-5">TOTAL PRICE: {{object.total_price}} FT</div>
         </div>
     </div>
 {% endfor %}
 </div>
+
 {% endblock content %}
 

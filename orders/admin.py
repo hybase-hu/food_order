@@ -6,6 +6,7 @@ from orders.models import Orders, SelectedFood
 
 class SelectedFoodAdmin(admin.ModelAdmin):
     list_display = ('pk', 'food', 'buyer', 'quantity', 'ordered', 'total_price', 'description')
+    list_filter = ['buyer',]
 
 
 class OrdersAdmin(admin.ModelAdmin):
